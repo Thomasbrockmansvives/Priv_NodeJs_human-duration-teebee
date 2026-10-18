@@ -105,20 +105,138 @@ function long_valuable_notation(duration_in_milliseconds) {
    return notation_string;
 }
 
-function short_full_notation(duration_in_milliseconds) {}
+function short_full_notation(duration_in_milliseconds) {
+   const duration_in_array = render_duration_in_array(duration_in_milliseconds);
+   let notation_string = "";
 
-function short_valuable_notation(duration_in_milliseconds) {}
+   notation_string += duration_in_array[0] + "d ";
 
-function time_full_notation(duration_in_milliseconds) {}
+   notation_string += duration_in_array[1] + "h ";
 
-function time_valuable_notation(duration_in_milliseconds) {}
+   notation_string += duration_in_array[2] + "m ";
+
+   notation_string += duration_in_array[3] + "s";
+
+   return notation_string;
+}
+
+function short_valuable_notation(duration_in_milliseconds) {
+   const duration_in_array = render_duration_in_array(duration_in_milliseconds);
+   let notation_string = "";
+
+   if (duration_in_array[0] > 0) {
+     notation_string += duration_in_array[0] + "d";
+
+     if (
+       duration_in_array[1] != 0 ||
+       duration_in_array[2] != 0 ||
+       duration_in_array[3] != 0
+     ) {
+       notation_string += " ";
+     }
+   }
+   if (duration_in_array[1] > 0) {
+     notation_string += duration_in_array[1] + "h";
+
+     if (duration_in_array[2] != 0 || duration_in_array[3] != 0) {
+       notation_string += " ";
+     }
+   }
+   if (duration_in_array[2] > 0) {
+     notation_string += duration_in_array[2] + "m";
+
+     if (duration_in_array[3] != 0) {
+       notation_string += " ";
+     }
+   }
+   if (duration_in_array[3] > 0) {
+     notation_string += duration_in_array[3] + "s";
+   }
+
+   return notation_string;
+}
+
+function time_full_notation(duration_in_milliseconds) {
+   const duration_in_array = render_duration_in_array(duration_in_milliseconds);
+   let notation_string = "";
+
+   notation_string += duration_in_array[0] + " day";
+   if (duration_in_array[0] != 1) {
+     notation_string += "s";
+   }
+   notation_string += ", ";
+
+   notation_string += duration_in_array[1] + " hour";
+   if (duration_in_array[1] != 1) {
+     notation_string += "s";
+   }
+   notation_string += ", ";
+
+   notation_string += duration_in_array[2] + " minute";
+   if (duration_in_array[2] != 1) {
+     notation_string += "s";
+   }
+   notation_string += ", ";
+
+   notation_string += duration_in_array[3] + " second";
+   if (duration_in_array[3] != 1) {
+     notation_string += "s";
+   }
+
+   return notation_string;
+}
+
+function time_valuable_notation(duration_in_milliseconds) {
+   const duration_in_array = render_duration_in_array(duration_in_milliseconds);
+   let notation_string = "";
+
+   if (duration_in_array[0] > 0) {
+     notation_string += duration_in_array[0] + " day";
+     if (duration_in_array[0] != 1) {
+       notation_string += "s";
+     }
+     if (
+       duration_in_array[1] != 0 ||
+       duration_in_array[2] != 0 ||
+       duration_in_array[3] != 0
+     ) {
+       notation_string += ", ";
+     }
+   }
+   if (duration_in_array[1] > 0) {
+     notation_string += duration_in_array[1] + " hour";
+     if (duration_in_array[1] != 1) {
+       notation_string += "s";
+     }
+     if (duration_in_array[2] != 0 || duration_in_array[3] != 0) {
+       notation_string += ", ";
+     }
+   }
+   if (duration_in_array[2] > 0) {
+     notation_string += duration_in_array[2] + " minute";
+     if (duration_in_array[2] != 1) {
+       notation_string += "s";
+     }
+     if (duration_in_array[3] != 0) {
+       notation_string += ", ";
+     }
+   }
+   if (duration_in_array[3] > 0) {
+     notation_string += duration_in_array[3] + " second";
+     if (duration_in_array[3] != 1) {
+       notation_string += "s";
+     }
+   }
+
+   return notation_string;
+}
 
 // 3 days, 3 hours, 22 minutes and 1,750 second
 console.log("3, 3, 22, 1.750");
-console.log(long_valuable_notation(271321750));
+console.log(short_valuable_notation(271321750));
 
 // 3 days, 0 hours, 22 minutes and 1,750 second
 console.log("3, 3, 22, 1.750");
-console.log(long_valuable_notation(260521750));
+console.log(short_valuable_notation(260521750));
 
 module.exports = {long_full_notation, long_valuable_notation, short_full_notation, short_valuable_notation, time_full_notation, time_valuable_notation};
