@@ -4,7 +4,7 @@ This package gives functions to convert a duration in milliseconds to usable and
 
 ### TeeBee packages
 
-teebee packages are generic functions often needs in projects.
+teebee packages are generic functions often needed in projects.
 
 ### Installation
 
