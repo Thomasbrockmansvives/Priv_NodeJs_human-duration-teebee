@@ -1,5 +1,3 @@
-const _ = require("lodash");
-
 const milliseconds_in_second = 1000;
 const milliseconds_in_minute = 60 * milliseconds_in_second;
 const milliseconds_in_hour = 60 * milliseconds_in_minute;
